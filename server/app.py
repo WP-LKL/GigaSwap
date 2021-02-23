@@ -9,6 +9,10 @@ app = Flask(__name__, template_folder='views')
 def welcome():
     return "Welcome to GigaSwap Trader Suite"
 
+@app.route('/trade')
+def trade():
+    return "Welcome to GigaSwap Trader Suite"
+
 @app.route('/strategy')
 def strategyOverview():
     if request.method == 'POST':
