@@ -6,3 +6,7 @@ def getPrice(**kwargs) -> float:
     """ Get price """
     if kwargs["exchange"] == "cdc":
         return asyncio.run(cdc.getPrice(**kwargs))
+
+def getBalance(**kwargs):
+    if kwargs["exchange"] == "cdc":
+        return asyncio.run(cdc.getBalance(**kwargs))
