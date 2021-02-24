@@ -22,6 +22,7 @@ def selectConfig(mode, lastConf=None, curConfig=None):
     return userConfigs[mode]
 
 exchangeCredentials = {
+    # https://crypto.com/exchange/personal/api-management
     "CDC" :         {
         "api_key"       : "",
         "api_secret"    : "",

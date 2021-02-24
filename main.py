@@ -6,12 +6,15 @@ baseConfig = {
     "verbose"       : True,
     
     "runserver"     : False,
-    "getPrice"      : False,
-    "getBalance"    : True,
+    "getPrice"      : True,
+    "getBalance"    : False,
+    "marketOrder"   : False,  # sell, buy
 
     "exchange"      : "cdc",
-    "c1"            : "cro",
-    "c2"            : "usdc",
+    "c1"            : "CRO",
+    "c2"            : "USDC",
+    "currencies"    : [("CRO", "USDC")],
+    "qty"           : 2.0,
 
 }
 
@@ -26,6 +29,10 @@ if __name__ == "__main__":
     if args["getBalance"]:
         if args["verbose"] : print(f"Getting balance from {args['exchange']}")
         print(utils.getBalance(**args))
+    
+    if args["marketOrder"]:
+        if args["verbose"] : print(f"Getting balance from {args['exchange']}")
+        print(utils.marketOrder(**args))
 
     if args["runserver"]:
         app.app.run()
