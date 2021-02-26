@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, g
 from markupsafe import escape
-from strat import strat
+from strat import launcher
 from utils import db
 
 app = Flask(__name__, template_folder='views')
@@ -16,9 +16,9 @@ def trade():
 @app.route('/strategy')
 def strategyOverview():
     if request.method == 'POST':
-        if strat.validStrategy(request.form['STRAT'], request.form['DICT']):
-
-            return strat.initStrategy() # request.form)
+        if launcher.validStrategy(request.form['STRAT'], request.form['DICT']):
+            launcher.launchStrategy()
+            return launcher.initStrategy() # request.form)
         else:
             return "Invalid strategy."                       
     else:

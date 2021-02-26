@@ -18,9 +18,9 @@ def clean_db(table):
     cur = get_db().execute('delete from ?', table)
     cur.close()
   
-def insert_db(table, rows):
+def insert_db(query, rows):
     with sqlite3.connect(DATABASE) as db:
-        db.executemany("INSERT INTO morder(ORDER_ID, EXCHANGE, TYPE, C1, C2, QUANTITY) values(?,?,?,?,?,?)", rows)
+        db.executemany(query, rows)
         db.commit()
 
 

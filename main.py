@@ -9,6 +9,7 @@ baseConfig = {
     "getPrice"      : True,
     "getBalance"    : False,
     "marketOrder"   : False,  # sell, buy
+    "strat"         : False,  # strategy name
 
     "exchange"      : "cdc",
     "c1"            : "CRO",
@@ -36,4 +37,6 @@ if __name__ == "__main__":
 
     if args["runserver"]:
         app.app.run()
+
+    input("Enter your value: ") 
     

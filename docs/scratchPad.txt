@@ -1,0 +1,3 @@
+Ideas:
+    Currency format: tuple-pair or separate?
+    Possible classes: Exchange, Strategy 

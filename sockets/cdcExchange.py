@@ -1,6 +1,6 @@
 import cryptocom.exchange as cdc
 from utils import db
-from conf import exchangeCredentials
+from config import exchangeCredentials
 
 EXCHANGE = cdc.Exchange()
 ACCOUNT = cdc.Account(**exchangeCredentials["CDC"])
@@ -16,11 +16,11 @@ async def getPrice(**kwargs) -> float:
 async def marketOrder(**kwargs):
     if kwargs["marketOrder"] == "buy":
         order_id = await ACCOUNT.buy_market(createPair(kwargs["c1"], kwargs["c2"]), spend=kwargs["qty"])
-        db.insert_db(table="order", rows=[(order_id, "cdc", "buy", kwargs["c1"], kwargs["c2"], kwargs["qty"])])
+        db.insert_db("INSERT INTO morder(ORDER_ID, EXCHANGE, TYPE, C1, C2, QUANTITY) values(?,?,?,?,?,?)", rows=[(order_id, "cdc", "buy", kwargs["c1"], kwargs["c2"], kwargs["qty"])])
         return order_id
     elif kwargs["marketOrder"] == "sell":
         order_id = await ACCOUNT.sell_market(createPair(kwargs["c1"], kwargs["c2"]), quantity=kwargs["qty"])
-        db.insert_db(table="order", rows=[(order_id, "cdc", "sell", kwargs["c1"], kwargs["c2"], kwargs["qty"])])
+        db.insert_db("INSERT INTO morder(ORDER_ID, EXCHANGE, TYPE, C1, C2, QUANTITY) values(?,?,?,?,?,?)", rows=[(order_id, "cdc", "sell", kwargs["c1"], kwargs["c2"], kwargs["qty"])])
         return order_id
 
 async def getBalance(**kwargs):

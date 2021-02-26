@@ -1,6 +1,9 @@
+from multiprocessing import Process
+from strat import canyon
+
 def validStrategy(strat, **kwargs):
     if strat == "canyon":
-        if ['p1', 'p2'] in kwargs:
+        if ['c1', 'c2'] in kwargs:
             return True
         else:
             print(f"Missing args in {kwargs}")
@@ -9,9 +12,11 @@ def validStrategy(strat, **kwargs):
         print(f"invalid strat {strat}")
         return False
 
-
-def initStrategy():
-    return None
+def launchStrategy(**kwargs):
+    if kwargs["strat"] == "canyon":
+        pass
+        #p = Process(target=canyon.canyonStrat, args=(**kwargs))
+    return None #p
 
 if __name__ == '__main__':
     None

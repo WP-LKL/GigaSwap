@@ -1,5 +1,4 @@
 import asyncio
-import cryptocom.exchange as cro
 from sockets import cdcExchange as cdc
 
 def getPrice(**kwargs) -> float:
